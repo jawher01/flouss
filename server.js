@@ -25,7 +25,7 @@ app.use("/user/comment", require("./routes/comment"));
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // server
-const PORT = 9000;
+const PORT = process.env.PORT || 9000;
 app.listen(PORT, (err) =>
   err ? console.log(err) : console.log(`server is running on ${PORT}`)
 );
