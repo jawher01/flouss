@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "pfe",
   "main": "index.js",
-  "scripts": {
-    "front": "cd client && npm start",
+  "scripts"
     "start": "node server.js",
-    "dev": "npm run front",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "jawher",
