@@ -12,7 +12,7 @@ import axios from "axios";
 export const registerUser = (user, history) => async (dispatch) => {
   dispatch({ type: LOAD_USER });
   try {
-    const result = await axios.post("http://localhost:9000/user/register", user);
+    const result = await axios.post("https://flouss.herokuapp.com/user/register", user);
     //{user,msg,token}
     // localStorage.setItem("token",result.data.token)
     dispatch({ type: REGISTER_USER, payload: result.data });
@@ -29,7 +29,7 @@ export const registerUser = (user, history) => async (dispatch) => {
 export const loginUser = (user, history) => async (dispatch) => {
   dispatch({ type: LOAD_USER });
   try {
-    const result = await axios.post("http://localhost:9000/user/login", user);
+    const result = await axios.post("https://flouss.herokuapp.com/user/login", user);
     //{user,msg,token}
     dispatch({ type: LOGIN_USER, payload: result.data });
     history.push("/dashbord");
@@ -52,7 +52,7 @@ export const current = () => async (dispatch) => {
     },
   };
   try {
-    let result = await axios.get("http://localhost:9000/user/current", options);
+    let result = await axios.get("https://flouss.herokuapp.com/user/current", options);
     //  user
     dispatch({ type: CURRENT_USER, payload: result.data.user });
   } catch (error) {

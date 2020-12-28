@@ -13,7 +13,7 @@ import {
 export const getAllPublications = () => async (dispatch) => {
   dispatch({ type: GET_PUBLICATIONS_LOAD })
   try {
-    let result = await axios.get("http://localhost:9000/user/publication")
+    let result = await axios.get("https://flouss.herokuapp.com/user/publication")
     dispatch({ type: GET_PUBLICATIONS_SUCCESS, payload: result.data.response })
 
   } catch (error) {
@@ -23,14 +23,14 @@ export const getAllPublications = () => async (dispatch) => {
 export const deletePublication = (id) => async (dispatch) => {
 
   axios
-    .delete(`http://localhost:9000/user/publication/${id}`)
+    .delete(`https://flouss.herokuapp.com/user/publication/${id}`)
     .then(res => dispatch(getAllPublications()))
     .then(()=>alert("Publication supprimer avec succes"))
     .catch((err) => console.log(err));
 };
 export const getPublication = (id) => (dispatch) => {
   axios
-    .get(`http://localhost:9000/user/publication/${id}`)
+    .get(`https://flouss.herokuapp.com/user/publication/${id}`)
     .then((res) => dispatch({ type: GET_PUBLICATION, payload: res.data.response }))
     .catch((err) => console.log(err));
 };
@@ -38,7 +38,7 @@ export const getPublication = (id) => (dispatch) => {
 export const postPublication = (user) => async (dispatch) => {
   console.log({ user })
   axios
-    .post("http://localhost:9000/user/publication", user)
+    .post("https://flouss.herokuapp.com/user/publication", user)
     .then((res) => dispatch(getPublication()))
     .then(()=>alert("Publication ajouter avec succes"))
     .catch((err) => console.log(err));
@@ -52,7 +52,7 @@ export const postPublication = (user) => async (dispatch) => {
 
 export const editPublication = (idPub, publication) => (dispatch) => {
   axios
-    .put(`http://localhost:9000/user/publication/${idPub}`, publication)
+    .put(`https://flouss.herokuapp.com/user/publication/${idPub}`, publication)
     .then((res) => {
       alert("Publication modifier avec succes");
 
@@ -66,7 +66,7 @@ export const editPublication = (idPub, publication) => (dispatch) => {
 export const addComment = (idPub, comment,) => {
   console.log( idPub, )
   axios
-    .post(`http://localhost:9000/user/comment/${idPub}`, comment)
+    .post(`https://flouss.herokuapp.com/user/comment/${idPub}`, comment)
     .then((res) => {
       console.log(res);
       alert("comment ajouter avec succes");
